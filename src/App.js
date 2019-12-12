@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          PWA React
+          PWA React updated...!!
         </a>
       </header>
     </div>
