@@ -1,0 +1,1 @@
+export { default as Paperbase } from './Admin'
