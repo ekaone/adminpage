@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import JohnDow from '../../assets/johnDow.jpg'
 
@@ -44,8 +44,20 @@ const styles = theme => ({
   },
 });
 
+// const tabLabes = [
+//   { id: 0, label: 'Users' },
+//   { id: 1, label: 'Work Order' },
+//   { id: 2, label: 'Purchase Order' },
+//   { id: 3, label: 'Apporval' },
+// ]
+
 function Header(props) {
-  const { classes, onDrawerToggle } = props;
+  const { classes, onDrawerToggle, handlerClickTab, index, tabLabels } = props;
+  // const [index, setIndex] = useState(0)
+
+  // const handleClickTab = (id) => {
+  //   setIndex(id)
+  // }
 
   return (
     <React.Fragment>
@@ -121,11 +133,12 @@ function Header(props) {
         position="static"
         elevation={0}
       >
-        <Tabs value={1} textColor="inherit">
-          <Tab textColor="inherit" label="Users" />
-          <Tab textColor="inherit" label="Work Order" />
-          <Tab textColor="inherit" label="Purchase Order" />
-          <Tab textColor="inherit" label="Details" />
+        <Tabs value={index} textColor="inherit">
+          {
+            tabLabels.map(label => (
+              <Tab key={label.id} textColor="inherit" label={label.label} onClick={() => handlerClickTab(label.id)} />
+            ))
+          }
         </Tabs>
       </AppBar>
     </React.Fragment>

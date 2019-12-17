@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+
 import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
+
 
 function Copyright() {
   return (
@@ -161,13 +164,27 @@ const styles = {
   },
 };
 
+const tabLabels = [
+  { id: 0, label: 'Users' },
+  { id: 1, label: 'Work Order' },
+  { id: 2, label: 'Purchase Order' },
+  { id: 3, label: 'Apporval' },
+]
+
 function Paperbase(props) {
   const { classes } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [index, setIndex] = useState(0)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const handleClickTab = (id) => {
+    setIndex(id)
+  }
+
+  console.log(index)
 
   return (
     <ThemeProvider theme={theme}>
@@ -187,7 +204,12 @@ function Paperbase(props) {
           </Hidden>
         </nav>
         <div className={classes.app}>
-          <Header onDrawerToggle={handleDrawerToggle} />
+          <Header 
+            onDrawerToggle={handleDrawerToggle}
+            tabLabels={tabLabels}
+            index={index}
+            handlerClickTab={handleClickTab}
+          />
           <main className={classes.main}>
             <Content />
           </main>
