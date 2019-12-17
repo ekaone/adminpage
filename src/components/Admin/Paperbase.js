@@ -216,10 +216,7 @@ function Paperbase(props) {
             handlerClickTab={handleClickTab}
           />
           <main className={classes.main}>
-            {/* <Content /> */}
-            {
-              setContent(index)
-            }
+            { setContent(index) }
           </main>
           <footer className={classes.footer}>
             <Copyright />
