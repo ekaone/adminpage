@@ -9,6 +9,7 @@ import Link from '@material-ui/core/Link';
 
 import Navigator from './Navigator';
 import Content from './Content';
+import Content2 from './Content2';
 import Header from './Header';
 
 
@@ -165,11 +166,12 @@ const styles = {
 };
 
 const tabLabels = [
-  { id: 0, label: 'Users' },
-  { id: 1, label: 'Work Order' },
-  { id: 2, label: 'Purchase Order' },
-  { id: 3, label: 'Apporval' },
+  { id: 0, label: 'Users', content: <Content /> },
+  { id: 1, label: 'Work Order', content: <Content2 /> },
+  { id: 2, label: 'Purchase Order', content: <Content2 /> },
+  { id: 3, label: 'Apporval', content: <Content2 /> },
 ]
+
 
 function Paperbase(props) {
   const { classes } = props;
@@ -184,7 +186,10 @@ function Paperbase(props) {
     setIndex(id)
   }
 
-  console.log(index)
+  const setContent = (idx) => {
+    const c = tabLabels.find(c => c.id === idx ? c.label : null)
+    return c.content
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -211,7 +216,10 @@ function Paperbase(props) {
             handlerClickTab={handleClickTab}
           />
           <main className={classes.main}>
-            <Content />
+            {/* <Content /> */}
+            {
+              setContent(index)
+            }
           </main>
           <footer className={classes.footer}>
             <Copyright />
