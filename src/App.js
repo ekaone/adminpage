@@ -1,10 +1,13 @@
 import React from 'react';
-import { Paperbase } from './components'
+import { 
+  Paperbase,
+  SocketTest 
+} from './components'
 
 function App() {
   return (
     <>
-      <Paperbase />
+      <SocketTest />
     </>
   );
 }
