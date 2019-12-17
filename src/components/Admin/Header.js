@@ -44,20 +44,8 @@ const styles = theme => ({
   },
 });
 
-// const tabLabes = [
-//   { id: 0, label: 'Users' },
-//   { id: 1, label: 'Work Order' },
-//   { id: 2, label: 'Purchase Order' },
-//   { id: 3, label: 'Apporval' },
-// ]
-
 function Header(props) {
   const { classes, onDrawerToggle, handlerClickTab, index, tabLabels } = props;
-  // const [index, setIndex] = useState(0)
-
-  // const handleClickTab = (id) => {
-  //   setIndex(id)
-  // }
 
   return (
     <React.Fragment>
